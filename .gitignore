@@ -1,0 +1,218 @@
+# ==================== NODE / NPM ====================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+package-lock.json
+
+# Logs
+logs
+*.log
+
+# ==================== BUILD OUTPUTS ====================
+# Vite
+dist/
+dist-ssr/
+*.local
+
+# TypeScript
+*.tsbuildinfo
+/tmp
+
+# ==================== ENVIRONMENT & SECRETS ====================
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keypairs & Private Keys (CRITICAL - Keep these safe!)
+*-keypair.json
+*.key
+wallet.json
+**/*-keypair.json
+**/*.key
+
+# ==================== SOLANA / ANCHOR ====================
+# Test ledger
+test-ledger/
+**/test-ledger/
+
+# Anchor build artifacts
+.anchor/
+/anchor/.anchor/
+/anchor/target/
+target/
+**/target/debug/
+**/target/deploy/
+**/target/release/
+**/target/sbf-solana-solana/
+**/target/idl/
+**/target/.rustc_info.json
+**/*.rs.bk
+
+# Solana CLI
+.config/solana/
+
+# ==================== PYTHON ====================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# ==================== EDITOR / IDE ====================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw?
+
+# Emacs
+\#*\#
+.\#*
+
+# ==================== OS SPECIFIC ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# ==================== PROJECT SPECIFIC ====================
+# Temporary Python scripts (based on your file structure)
+main copy.py
+main1.py
+main2.py
+main3.py
+main4.py
+main5 copy.py
+main5.py
+main6.py
+
+# Job data
+latest_jobs.json
+jobs.json
+
+# ==================== MISC ====================
+# Temporary files
+*.tmp
+*.temp
+*.cache
+*.bak
+*.backup
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large media files (if any)
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Turbo cache
+.turbo
+
+# Lock files (optional - uncomment if you want to ignore)
+# yarn.lock
+# pnpm-lock.yaml

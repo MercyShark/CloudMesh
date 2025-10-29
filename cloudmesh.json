@@ -1,0 +1,533 @@
+{
+  "address": "2pbdwB29EXvsfEcigJrMwEaDx2T16zZ47aK5oGabjx7S",
+  "metadata": {
+    "name": "cloudmesh",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "cancel_job",
+      "docs": [
+        "Cancel a job (only by owner, only if not completed)"
+      ],
+      "discriminator": [
+        126,
+        241,
+        155,
+        241,
+        50,
+        236,
+        83,
+        118
+      ],
+      "accounts": [
+        {
+          "name": "job",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  106,
+                  111,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "job.owner",
+                "account": "Job"
+              },
+              {
+                "kind": "account",
+                "path": "job.title",
+                "account": "Job"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "job"
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "complete_job",
+      "docs": [
+        "Update job result and mark as complete (only by authorized worker)"
+      ],
+      "discriminator": [
+        221,
+        216,
+        225,
+        72,
+        101,
+        250,
+        3,
+        11
+      ],
+      "accounts": [
+        {
+          "name": "job",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  106,
+                  111,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "job.owner",
+                "account": "Job"
+              },
+              {
+                "kind": "account",
+                "path": "job.title",
+                "account": "Job"
+              }
+            ]
+          }
+        },
+        {
+          "name": "worker",
+          "docs": [
+            "Worker authorized to complete jobs"
+          ],
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "result_cid",
+          "type": "string"
+        },
+        {
+          "name": "cost",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_job",
+      "docs": [
+        "Initialize a new job"
+      ],
+      "discriminator": [
+        137,
+        22,
+        138,
+        41,
+        76,
+        208,
+        114,
+        50
+      ],
+      "accounts": [
+        {
+          "name": "job",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  106,
+                  111,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              },
+              {
+                "kind": "arg",
+                "path": "title"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "code_cid",
+          "type": "string"
+        },
+        {
+          "name": "job_type",
+          "type": {
+            "defined": {
+              "name": "JobType"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "mark_payment",
+      "docs": [
+        "Mark payment as completed (only by owner)"
+      ],
+      "discriminator": [
+        164,
+        94,
+        195,
+        185,
+        80,
+        44,
+        233,
+        243
+      ],
+      "accounts": [
+        {
+          "name": "job",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  106,
+                  111,
+                  98
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "job.owner",
+                "account": "Job"
+              },
+              {
+                "kind": "account",
+                "path": "job.title",
+                "account": "Job"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "job"
+          ]
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Job",
+      "discriminator": [
+        75,
+        124,
+        80,
+        203,
+        161,
+        180,
+        202,
+        80
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "JobCancelled",
+      "discriminator": [
+        203,
+        84,
+        143,
+        130,
+        48,
+        134,
+        74,
+        191
+      ]
+    },
+    {
+      "name": "JobCompleted",
+      "discriminator": [
+        176,
+        207,
+        246,
+        115,
+        95,
+        179,
+        9,
+        132
+      ]
+    },
+    {
+      "name": "JobCreated",
+      "discriminator": [
+        48,
+        110,
+        162,
+        177,
+        67,
+        74,
+        159,
+        131
+      ]
+    },
+    {
+      "name": "PaymentMarked",
+      "discriminator": [
+        70,
+        8,
+        172,
+        75,
+        106,
+        170,
+        251,
+        234
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidTitle",
+      "msg": "Title must be between 1 and 100 characters"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidCID",
+      "msg": "CID must be between 1 and 100 characters"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidCost",
+      "msg": "Cost must be greater than 0"
+    },
+    {
+      "code": 6003,
+      "name": "JobAlreadyCompleted",
+      "msg": "Job is already completed"
+    },
+    {
+      "code": 6004,
+      "name": "JobCancelled",
+      "msg": "Job has been cancelled"
+    },
+    {
+      "code": 6005,
+      "name": "JobAlreadyCancelled",
+      "msg": "Job is already cancelled"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidStatusTransition",
+      "msg": "Invalid status transition"
+    },
+    {
+      "code": 6007,
+      "name": "AlreadyPaid",
+      "msg": "Payment already marked as paid"
+    },
+    {
+      "code": 6008,
+      "name": "Unauthorized",
+      "msg": "Unauthorized: Only owner can perform this action"
+    }
+  ],
+  "types": [
+    {
+      "name": "Job",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "code_cid",
+            "type": "string"
+          },
+          {
+            "name": "result_cid",
+            "type": "string"
+          },
+          {
+            "name": "start_time",
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
+            "type": "i64"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "JobStatus"
+              }
+            }
+          },
+          {
+            "name": "job_type",
+            "type": {
+              "defined": {
+                "name": "JobType"
+              }
+            }
+          },
+          {
+            "name": "cost",
+            "type": "u64"
+          },
+          {
+            "name": "cost_paid",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JobCancelled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "job_key",
+            "type": "pubkey"
+          },
+          {
+            "name": "cancelled_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JobCompleted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "job_key",
+            "type": "pubkey"
+          },
+          {
+            "name": "result_cid",
+            "type": "string"
+          },
+          {
+            "name": "end_time",
+            "type": "i64"
+          },
+          {
+            "name": "cost",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JobCreated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "job_key",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JobStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pending"
+          },
+          {
+            "name": "Completed"
+          },
+          {
+            "name": "Cancelled"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JobType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Cron"
+          },
+          {
+            "name": "Api"
+          },
+          {
+            "name": "Manual"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PaymentMarked",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "job_key",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}
