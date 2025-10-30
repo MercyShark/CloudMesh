@@ -6,8 +6,8 @@ import { useAnchorProvider } from '@/components/solana/use-anchor-provider'
 import { useTransactionToast } from '@/components/use-transaction-toast'
 import { toast } from 'sonner'
 import { AnchorProvider, Program, BN } from '@coral-xyz/anchor'
-import { Cloudmesh } from '../../../anchor/target/types/cloudmesh'
-import CloudmeshIDL from '../../../anchor/target/idl/cloudmesh.json'
+import { Cloudmesh } from './cloudmesh'
+import CloudmeshIDL from './cloudmesh.json'
 
 const CLOUDMESH_PROGRAM_ID = new PublicKey('5FpaVW1qm2MiELsJK9dqWs6rNMxdoN7wHKXygtcnAD4f')
 
