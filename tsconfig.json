@@ -10,6 +10,8 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+       "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "paths": {
       "@project/anchor": ["anchor/src"],
       "@/*": ["./src/*"]
