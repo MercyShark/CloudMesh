@@ -12,8 +12,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
     viteTsconfigPaths({
-      //
       root: resolve(__dirname),
     }),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+  },
 })

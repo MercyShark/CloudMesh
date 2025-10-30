@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "esnext",
@@ -18,12 +19,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "@project/anchor": ["anchor/src"],
-      "@/*": ["./src/*"]
-    }
+    "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
 }
